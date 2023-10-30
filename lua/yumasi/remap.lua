@@ -19,3 +19,4 @@ wk.register({
 
 vim.keymap.set("n", "<leader>fd", vim.cmd.Ex, { desc = "Browse current directory" })
 vim.keymap.set("n", "<leader>fs", vim.cmd.write, { desc = "Save file" })
+vim.keymap.set("n", "<leader>bd", vim.cmd.bdelete, { desc = "Delete buffer" })

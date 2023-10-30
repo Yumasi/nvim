@@ -49,4 +49,12 @@ require("lazy").setup({
       {'williamboman/mason-lspconfig.nvim'},
     },
   },
+  {
+      "zbirenbaum/copilot.lua",
+      cmd = "Copilot",
+      event = "InsertEnter",
+      dependencies = {
+          { "zbirenbaum/copilot-cmp" },
+      },
+  },
 })

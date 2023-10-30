@@ -1,40 +1,48 @@
-local lsp_zero = require('lsp-zero')
+local lsp = require('lsp-zero').preset({})
 
-lsp_zero.preset("recommended")
-
-lsp_zero.on_attach(function(client, bufnr)
-	-- see :help lsp-zero-keybindings
-	-- to learn the available actions
-	lsp_zero.default_keymaps({ buffer = bufnr })
-	lsp_zero.buffer_autoformat()
+lsp.on_attach(function(client, bufnr)
+    -- see :help lsp-zero-keybindings
+    -- to learn the available actions
+    lsp.default_keymaps({ buffer = bufnr })
+    lsp.buffer_autoformat()
 end)
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-	ensure_installed = {},
-	handlers = {
-		lsp_zero.default_setup,
-		lua_ls = function()
-			local lua_opts = lsp_zero.nvim_lua_ls()
-			require('lspconfig').lua_ls.setup(lua_opts)
-		end
-	},
+    ensure_installed = {
+        'lua_ls',
+        'pylsp',
+        'ruff_lsp',
+    },
+    handlers = {
+        lsp.default_setup,
+    },
+})
+
+lsp.setup_servers({
+    'clangd',
+    'gopls',
 })
 
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
+local cmp_action = require('lsp-zero').cmp_action()
+require('luasnip.loaders.from_vscode').lazy_load()
 
 cmp.setup({
-	sources = {
-		{ name = 'path' },
-		{ name = 'nvim_lsp' },
-		{ name = 'nvim_lua' },
-	},
-	formatting = lsp_zero.cmp_format(),
-	mapping = cmp.mapping.preset.insert({
-		['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-		['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-		['<C-y>'] = cmp.mapping.confirm({ select = true }),
-		['<C-Space>'] = cmp.mapping.complete(),
-	}),
+    sources = {
+        { name = 'copilot' },
+        { name = 'path' },
+        { name = 'nvim_lsp' },
+        { name = 'nvim_lua' },
+    },
+    formatting = lsp.cmp_format(),
+    mapping = cmp.mapping.preset.insert({
+        ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+        ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+        ['<CR>'] = cmp.mapping.confirm({ select = false, behavior = cmp.ConfirmBehavior.Replace }),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-f>'] = cmp_action.luasnip_jump_forward(),
+        ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+    }),
 })
