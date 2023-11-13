@@ -22,6 +22,7 @@ require('mason-lspconfig').setup({
 lsp.setup_servers({
     'clangd',
     'gopls',
+    'rust_analyzer',
 })
 
 local cmp = require('cmp')
