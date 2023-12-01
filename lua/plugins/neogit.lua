@@ -7,6 +7,10 @@ return {
             'sindrets/diffview.nvim',
             'ibhagwan/fzf-lua',
         },
-        config = true
+        config = true,
+        cmd = "Neogit",
+        keys = {
+            { '<leader>gs', vim.cmd.Neogit, desc = "Git status" },
+        }
     },
 }

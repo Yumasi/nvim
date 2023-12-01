@@ -1,21 +1,12 @@
 local wk = require("which-key")
 
 wk.register({
-    f = {
-        name = "file",
-    },
-    p = {
-        name = "project",
-    },
-    b = {
-        name = "buffers",
-    },
-    h = {
-        name = "help",
-    },
-    w = {
-        name = "window",
-    },
+    b = { name = "buffers" },
+    f = { name = "file" },
+    g = { name = "git" },
+    h = { name = "help" },
+    p = { name = "project" },
+    w = { name = "window" },
 }, { prefix = "<leader>" })
 
 vim.keymap.set("n", "<leader>fd", vim.cmd.Ex, { desc = "Browse current directory" })
