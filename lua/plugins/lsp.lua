@@ -10,5 +10,9 @@ return {
             { 'williamboman/mason.nvim' },
             { 'williamboman/mason-lspconfig.nvim' },
         },
+        keys = {
+            { 'gd', vim.lsp.buf.definition, desc = "Goto definition" },
+            { 'gD', vim.lsp.buf.references, desc = "Goto references" },
+        },
     },
 }
