@@ -1,4 +1,5 @@
 local lsp = require('lsp-zero').preset({})
+local lsp_config = require('lspconfig')
 
 lsp.on_attach(function(client, bufnr)
     -- see :help lsp-zero-keybindings
@@ -17,7 +18,7 @@ require('mason-lspconfig').setup({
     handlers = {
         lsp.default_setup,
         lua_ls = function()
-            require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+            lsp_config.lua_ls.setup(lsp.nvim_lua_ls())
         end,
     },
 })
