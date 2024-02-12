@@ -26,6 +26,7 @@ require('mason-lspconfig').setup({
 lsp.setup_servers({
     'clangd',
     'gopls',
+    'nil_ls',
     'rust_analyzer',
 })
 
