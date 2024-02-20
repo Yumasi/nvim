@@ -15,5 +15,11 @@ return {
             { "<leader>gB", ":Gitsigns toggle_current_line_blame<CR>", desc = "Toggle blame" },
         },
     },
+    {
+        "tpope/vim-fugitive",
+        cmd = "Git",
+        keys = {
+            { "<leader>gg", vim.cmd.Git, desc = "Git status" },
+        }
     }
 }
