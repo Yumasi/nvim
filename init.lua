@@ -15,3 +15,5 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
 require("yumasi")
+
+vim.keymap.set('n', "<leader>hl", vim.cmd.Lazy, { desc = "Show Lazy" })
