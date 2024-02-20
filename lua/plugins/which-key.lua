@@ -8,5 +8,8 @@ return {
         end,
         opts = {},
         lazy = true,
+        keys = {
+            { "<leader>hk", vim.cmd.WhichKey, desc = "Show keybindings" },
+        }
     }
 }
