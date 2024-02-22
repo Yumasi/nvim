@@ -23,13 +23,16 @@ return {
 
             require('telescope').setup(opts)
         end,
-        keys = {
-            { '<leader>pf', ":Telescope fd<CR>",        { desc = "Files" } },
-            { '<leader>ps', ":Telescope live_grep<CR>", { desc = "Search" } },
-            { '<leader>bb', ":Telescope buffers<CR>",   { desc = "Find buffer" } },
-            { '<leader>hm', ":Telescope man_pages<CR>", { desc = "Man pages" } },
-            { '<leader>hh', ":Telescope help_tags<CR>", { desc = "Help pages" } },
-            { '<C-p>',      ":Telescope git_files<CR>", { desc = "Browse Git files" } },
-        },
+        keys = function()
+            local builtin = require('telescope.builtin')
+            return {
+                { '<leader>pf', builtin.fd,        { desc = "Files" } },
+                { '<leader>ps', builtin.live_grep, { desc = "Search" } },
+                { '<leader>bb', builtin.buffers,   { desc = "Find buffer" } },
+                { '<leader>hm', builtin.man_pages, { desc = "Man pages" } },
+                { '<leader>hh', builtin.help_tags, { desc = "Help pages" } },
+                { '<C-p>',      builtin.git_files, { desc = "Browse Git files" } },
+            }
+        end,
     },
 }
