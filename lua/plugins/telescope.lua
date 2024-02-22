@@ -23,6 +23,7 @@ return {
 
             require('telescope').setup(opts)
         end,
+        cmd = "Telescope",
         keys = function()
             local builtin = require('telescope.builtin')
             return {
