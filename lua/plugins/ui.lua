@@ -1,15 +1,12 @@
 return {
     {
-        'rose-pine/neovim',
-        name = 'rose-pine',
+        'bluz71/vim-nightfly-colors',
+        name = 'nightfly',
         lazy = false,
-        opts = {
-            variant = 'auto',
-            dark_variant = 'moon',
-        },
-        config = function(_, opts)
-            require('rose-pine').setup(opts)
-            vim.cmd('colorscheme rose-pine')
+        priority = 1000,
+        config = function(_, _)
+            vim.cmd('colorscheme nightfly')
+            vim.g.nightflyCursorColor = true
         end,
     },
     -- better vim.ui
