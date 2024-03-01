@@ -46,6 +46,7 @@ return {
             local servers = {
                 'clangd',
                 'gopls',
+                'ruff_lsp',
             }
             for _, lsp in ipairs(servers) do
                 lspconfig[lsp].setup {
@@ -87,6 +88,7 @@ return {
                 opts = {
                     ensure_installed = {
                         'lua_ls',
+                        'ruff_lsp',
                     },
                 },
             },
