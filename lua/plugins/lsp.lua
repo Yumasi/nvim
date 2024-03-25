@@ -46,6 +46,7 @@ return {
             local servers = {
                 'clangd',
                 'gopls',
+                'pylsp',
                 'ruff_lsp',
             }
             for _, lsp in ipairs(servers) do
