@@ -16,10 +16,15 @@ return {
         },
     },
     {
-        "tpope/vim-fugitive",
-        cmd = "Git",
+        "NeogitOrg/neogit",
+        dependencies = {
+            "nvim-lua/plenary.nvim",         -- required
+            "sindrets/diffview.nvim",        -- optional - Diff integration
+            "nvim-telescope/telescope.nvim", -- optional
+        },
+        config = true,
         keys = {
-            { "<leader>gg", vim.cmd.Git, desc = "Git status" },
+            { "<leader>gg", vim.cmd.Neogit, desc = "Git status" },
         }
     }
 }
